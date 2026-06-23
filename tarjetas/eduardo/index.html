@@ -69,6 +69,7 @@ body{
   font-size:32px;font-weight:200;letter-spacing:-0.02em;line-height:1.1;
   color:var(--txt);margin-bottom:8px;
 }
+.identity .name .cert{display:inline-block;font-size:0.32em;font-weight:400;letter-spacing:.22em;color:var(--accent);vertical-align:0.7em;margin-left:0.25em;padding:4px 10px;border:1px solid rgba(168,198,192,0.30);border-radius:20px;}
 .identity .role{font-size:14.5px;font-weight:300;color:var(--txt-dim);line-height:1.4;}
 .identity .role .sep{color:var(--txt-faint);margin:0 6px;}
 .identity .co{color:var(--accent);}
@@ -179,7 +180,7 @@ body{
   </div>
 
   <section class="identity fade-in">
-    <h1 class="name">Eduardo Sanchez Chalita</h1>
+    <h1 class="name">Eduardo Sanchez Chalita <span class="cert">CAIA</span></h1>
     <p class="role">Co-CEO <span class="sep">·</span> <span class="co">Capitia</span></p>
   </section>
 
@@ -242,7 +243,7 @@ body{
 const contact = {
   firstName: "Eduardo",
   lastName: "Sanchez Chalita",
-  fullName: "Eduardo Sanchez Chalita",
+  fullName: "Eduardo Sanchez Chalita, CAIA",
   org: "Capitia",
   title: "Co-CEO",
   phone: "+523118766703",
@@ -259,7 +260,7 @@ function buildVCard(c){
   return [
     "BEGIN:VCARD",
     "VERSION:3.0",
-    `N:${c.lastName};${c.firstName};;;`,
+    `N:${c.lastName};${c.firstName};;;CAIA`,
     `FN:${c.fullName}`,
     `ORG:${c.org}`,
     `TITLE:${c.title}`,
