@@ -452,7 +452,11 @@ footer .foot-bottom span{color:rgba(224,234,230,0.45);}
 @media(max-width:900px){
   .nav-links{position:fixed;inset:0;background:rgba(255,255,255,0.97);backdrop-filter:blur(20px);flex-direction:column;justify-content:center;gap:30px;transform:translateX(100%);transition:transform .4s;}
   .nav-links.open{transform:none;}
-  .nav-links a{font-size:20px;}
+  .nav-links a{font-size:20px;color:var(--txt);}
+  .nav-links a:hover{color:var(--night);}
+  .nav-cta{color:var(--night)!important;border-color:var(--line-strong);}
+  .nav-cta:hover{background:var(--night);color:#fff!important;border-color:var(--night);}
+  nav.nav-open .nav-toggle{color:var(--night);}
   .nav-toggle{display:block;z-index:101;}
   .cols2,.score-wrap,.plan-grid,.card-row{grid-template-columns:1fr;}
   .sec{padding:90px 0;}
@@ -460,6 +464,113 @@ footer .foot-bottom span{color:rgba(224,234,230,0.45);}
 @media(max-width:560px){
   .wrap{padding:0 22px;}nav{padding:18px 22px;}
   .hero-meta{gap:28px;}
+}
+
+/* TIERS */
+.tiers-disc{
+  border:1px solid var(--line);border-left:3px solid var(--accent);
+  border-radius:14px;background:var(--bg-tint);
+  padding:24px 28px;margin-bottom:48px;max-width:880px;
+  font-size:15.5px;color:var(--txt-dim);font-weight:300;line-height:1.6;
+}
+.tiers-disc b{color:var(--night);font-weight:500;}
+.tier-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:40px;}
+.tier-tab{
+  position:relative;font-family:inherit;cursor:pointer;
+  border:1px solid var(--line-strong);background:var(--bg);color:var(--txt-dim);
+  border-radius:46px;padding:13px 28px;font-size:15px;letter-spacing:.01em;
+  transition:all .3s cubic-bezier(.2,.8,.2,1);
+}
+.tier-tab:hover{border-color:var(--night);color:var(--night);}
+.tier-tab.active{background:var(--night);border-color:var(--night);color:#fff;}
+.tier-tab .rec{
+  margin-left:9px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent);border:1px solid var(--accent);border-radius:30px;padding:2px 9px;vertical-align:middle;
+}
+.tier-tab.active .rec{color:var(--fog);border-color:rgba(224,234,230,.5);}
+.tier-panels{position:relative;}
+.tier-panel{display:none;}
+.tier-panel.active{display:block;animation:tierfade .4s cubic-bezier(.2,.8,.2,1);}
+@keyframes tierfade{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:none;}}
+.tier-card{
+  border:1px solid var(--line);border-radius:22px;padding:50px 48px;position:relative;
+  background:var(--bg);box-shadow:0 4px 24px -10px rgba(21,22,44,0.08);max-width:760px;
+}
+.tier-card.rec{border-color:var(--accent);box-shadow:0 20px 50px -22px rgba(8,57,51,.28);}
+.tier-card .badge{
+  position:absolute;top:30px;right:30px;font-size:11px;letter-spacing:.18em;
+  color:var(--accent);border:1px solid var(--accent);border-radius:30px;padding:6px 14px;font-weight:400;
+}
+.tier-card .ptag{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-weight:400;}
+.tier-card .pname{font-size:40px;font-weight:100;margin:14px 0 6px;letter-spacing:-.02em;}
+.tier-card .ptag-line{font-size:18px;color:var(--txt);font-weight:300;margin-bottom:30px;line-height:1.5;}
+.tier-capis{
+  margin-top:26px;display:inline-flex;align-items:center;gap:10px;
+  font-size:14px;color:var(--txt-dim);font-weight:300;
+  background:var(--fog);border-radius:30px;padding:9px 18px;
+}
+.tier-capis b{color:var(--accent);font-weight:500;}
+/* comparison table */
+.tier-table-wrap{margin-top:64px;overflow-x:auto;}
+.tier-table{width:100%;border-collapse:collapse;min-width:620px;font-size:15px;}
+.tier-table th,.tier-table td{padding:18px 20px;text-align:left;border-bottom:1px solid var(--line);}
+.tier-table thead th{font-weight:500;color:var(--night);font-size:13px;letter-spacing:.04em;}
+.tier-table thead th.rec{color:var(--accent);}
+.tier-table th[scope=row]{font-weight:400;color:var(--txt-dim);}
+.tier-table td{color:var(--txt);font-weight:300;}
+.tier-table td.yes{color:var(--accent);font-weight:500;}
+.tier-table td.no{color:var(--txt-faint);}
+.tier-table col.rec-col,.tier-table td.rec-col{background:var(--bg-tint);}
+.tier-gloss{
+  margin-top:36px;font-size:13.5px;color:var(--txt-faint);font-weight:300;line-height:1.6;max-width:760px;
+}
+.tier-gloss b{color:var(--txt-dim);font-weight:500;}
+
+/* INDUSTRIES MARQUEE */
+.inds{background:transparent;padding:96px 0;}
+.inds .sec-head{margin-bottom:48px;}
+.inds-marquee{
+  position:relative;overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);
+}
+.inds-track{display:flex;width:max-content;animation:ind-scroll 38s linear infinite;}
+.inds-marquee:hover .inds-track{animation-play-state:paused;}
+.inds-row{display:flex;gap:16px;padding-right:16px;}
+.ind-chip{
+  display:flex;align-items:center;gap:13px;white-space:nowrap;
+  border:1px solid var(--line);border-radius:46px;background:var(--bg);
+  padding:15px 26px;color:var(--night);font-size:16px;font-weight:400;
+  box-shadow:0 4px 18px -12px rgba(21,22,44,.12);transition:border-color .3s ease;
+}
+.ind-chip:hover{border-color:var(--line-strong);}
+.ind-chip .ic{
+  width:34px;height:34px;flex:0 0 auto;border-radius:9px;background:var(--fog);color:var(--accent);
+  display:flex;align-items:center;justify-content:center;
+}
+.ind-chip .ic svg{width:19px;height:19px;}
+@keyframes ind-scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+@media(prefers-reduced-motion:reduce){
+  .inds-track{animation:none;flex-wrap:wrap;width:auto;justify-content:center;}
+  .inds-row:nth-child(2){display:none;}
+  .inds-marquee{-webkit-mask-image:none;mask-image:none;}
+}
+@media(max-width:560px){
+  .tier-card{padding:38px 26px;}
+  .tier-card .badge{position:static;display:inline-block;margin-bottom:18px;}
+}
+
+/* QUIENES SOMOS */
+.quienes .sec-head{margin-bottom:40px;}
+.quienes-body{max-width:840px;}
+.quienes-body p{font-size:21px;color:var(--txt-dim);font-weight:300;line-height:1.62;}
+.quienes-body p+p{margin-top:26px;}
+.quienes-body .emph{
+  color:var(--night);font-weight:400;
+  border-left:2px solid var(--accent);padding-left:24px;
+}
+@media(max-width:560px){
+  .quienes-body p{font-size:18px;}
 }
 </style>
 </head>
@@ -471,11 +582,13 @@ footer .foot-bottom span{color:rgba(224,234,230,0.45);}
     <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="8" x2="21" y2="8"/><line x1="3" y1="16" x2="21" y2="16"/></svg>
   </button>
   <div class="nav-links" id="navLinks">
+    <a href="#quienes">Nosotros</a>
     <a href="#como">Cómo funciona</a>
     <a href="#score">Score</a>
     <a href="#entregable">Entregable</a>
-    <a href="#sectores">Sectores</a>
     <a href="#planes">Planes</a>
+    <a href="#industrias">Industrias</a>
+    <a href="#sectores">Sectores</a>
     <a href="#contacto" class="nav-cta">Hablemos</a>
   </div>
 </nav>
@@ -494,6 +607,20 @@ footer .foot-bottom span{color:rgba(224,234,230,0.45);}
     <p class="tagline reveal">Administración con IA</p>
   </div>
 </header>
+
+<!-- QUIENES SOMOS -->
+<section class="sec quienes" id="quienes">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Quiénes somos</span>
+      <h2>Dentro de tu empresa, <span class="accent">no de visita.</span></h2>
+    </div>
+    <div class="quienes-body reveal">
+      <p>Capitia es una firma mexicana de consultoría financiera y administrativa. Trabajamos dentro de las empresas para ordenar su operación desde el punto exacto donde nace el dato —la cotización, la captura, la facturación, la cobranza— y convertir esa información en decisiones financieras con respaldo.</p>
+      <p class="emph">No llegamos, presentamos y nos vamos: nos quedamos hasta que la dirección confía plenamente en cada número que ve.</p>
+    </div>
+  </div>
+</section>
 
 <!-- COMO FUNCIONA -->
 <section class="sec" id="como">
@@ -634,31 +761,133 @@ footer .foot-bottom span{color:rgba(224,234,230,0.45);}
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow">Planes</span>
-      <h2>Empieza con orden. <span class="accent">Suma automatización después.</span></h2>
+      <h2>Tres formas de trabajar <span class="accent">con nosotros.</span></h2>
+      <p class="lead">Desde tener tu herramienta y operarla tú mismo, hasta delegarnos la operación completa con automatización. Cada plan suma sobre el anterior.</p>
     </div>
-    <div class="plan-grid">
-      <div class="plan core reveal">
-        <span class="badge">Empieza aquí</span>
-        <span class="ptag">Producto base</span>
-        <div class="pname">Capitia</div>
-        <p class="ptag-line">El orden que te queda, una vez por todas. La base para todo lo demás.</p>
-        <ul class="feat-grid">
-          <li><span class="fi">→</span><span class="ft"><b>Consultoría en piso</b><span>Diagnóstico, manual de criterios y capacitación del equipo.</span></span></li>
-          <li><span class="fi">→</span><span class="ft"><b>Capitia Score</b><span>La medida única de la salud financiera y operativa.</span></span></li>
-          <li><span class="fi">→</span><span class="ft"><b>Dashboard a medida</b><span>Lo que tu dirección necesita cada mes. Sin pedirlo.</span></span></li>
-          <li><span class="fi">→</span><span class="ft"><b>Cierre confiable + Sello iA</b><span>De 21 a 4 días. Información lista para decidir.</span></span></li>
-        </ul>
+
+    <div class="tiers-disc reveal">
+      <b>Cada sistema es único.</b> Estos planes son el marco; el ERP y todo lo que construimos se diseña a la medida de tu empresa. No hay dos iguales, porque no hay dos operaciones iguales.
+    </div>
+
+    <div class="tier-tabs reveal" role="tablist" aria-label="Planes Capitia">
+      <button class="tier-tab" role="tab" aria-selected="false" data-tier="base">CAPITIA Base</button>
+      <button class="tier-tab active" role="tab" aria-selected="true" data-tier="control">CAPITIA Control <span class="rec">Recomendado</span></button>
+      <button class="tier-tab" role="tab" aria-selected="false" data-tier="total">CAPITIA Total</button>
+    </div>
+
+    <div class="tier-panels reveal">
+      <div class="tier-panel" data-tier="base" role="tabpanel">
+        <div class="tier-card">
+          <span class="ptag">Plan 1</span>
+          <div class="pname">CAPITIA Base</div>
+          <p class="ptag-line">Tu ERP a la medida, tú lo operas.</p>
+          <ul class="feat-grid">
+            <li><span class="fi">→</span><span class="ft"><b>Análisis de negocio + ERP a la medida</b><span>Estudiamos tu operación y construimos la herramienta que tu empresa necesita.</span></span></li>
+            <li><span class="fi">→</span><span class="ft"><b>Mantenimiento incluido</b><span>Ajustes, soporte y actualizaciones del sistema sobre la marcha.</span></span></li>
+            <li><span class="fi">→</span><span class="ft"><b>Tú operas el día a día</b><span>El llenado y la captura quedan a cargo de tu equipo.</span></span></li>
+          </ul>
+          <div class="tier-capis">Acceso a CapitIA · <b>CAPIs limitados</b></div>
+        </div>
       </div>
-      <div class="plan reveal">
-        <span class="ptag">Capa complementaria · opcional</span>
-        <div class="pname">Capitia <span class="plus">+</span></div>
-        <p class="ptag-line">Lo que ya está ordenado, también puede ejecutarse solo.</p>
-        <ul class="feat-grid">
-          <li><span class="fi">✓</span><span class="ft"><b>Facturación y cobranza</b><span>CFDI desde WhatsApp o correo. Recordatorios automáticos.</span></span></li>
-          <li><span class="fi">✓</span><span class="ft"><b>Pagos y conciliación</b><span>Programados por chat. Movimientos cruzados con tu ERP.</span></span></li>
-          <li><span class="fi">✓</span><span class="ft"><b>Reportes y alertas</b><span>Llegan solos. El agente avisa cuando hay que decidir.</span></span></li>
-          <li><span class="fi">✓</span><span class="ft"><b>Agente WhatsApp a medida</b><span>Cualquier tarea repetitiva — la describes, la automatizamos.</span></span></li>
-        </ul>
+      <div class="tier-panel active" data-tier="control" role="tabpanel">
+        <div class="tier-card rec">
+          <span class="badge">Recomendado</span>
+          <span class="ptag">Plan 2 · incluye todo lo de Base</span>
+          <div class="pname">CAPITIA Control</div>
+          <p class="ptag-line">Nosotros lo operamos, tú decides.</p>
+          <ul class="feat-grid">
+            <li><span class="fi">✓</span><span class="ft"><b>El llenado y la captura los hacemos nosotros</b><span>Tu equipo se libera de la carga operativa; nosotros alimentamos el sistema.</span></span></li>
+            <li><span class="fi">✓</span><span class="ft"><b>Asesoría con expertos certificados</b><span>Acompañamiento financiero con un CAIA y candidato CFA.</span></span></li>
+            <li><span class="fi">✓</span><span class="ft"><b>Todo lo del plan Base</b><span>ERP a la medida, mantenimiento y soporte continuo.</span></span></li>
+          </ul>
+          <div class="tier-capis">Acceso a CapitIA · <b>CAPIs amplios</b></div>
+        </div>
+      </div>
+      <div class="tier-panel" data-tier="total" role="tabpanel">
+        <div class="tier-card">
+          <span class="ptag">Plan 3 · incluye todo lo de Control</span>
+          <div class="pname">CAPITIA Total</div>
+          <p class="ptag-line">Operación completa + automatización.</p>
+          <ul class="feat-grid">
+            <li><span class="fi">✓</span><span class="ft"><b>Automatización de procesos administrativos</b><span>Las tareas repetitivas dejan de consumir tiempo de tu equipo.</span></span></li>
+            <li><span class="fi">✓</span><span class="ft"><b>Operación a cargo de nosotros</b><span>Captura, asesoría certificada y seguimiento, igual que en Control.</span></span></li>
+            <li><span class="fi">✓</span><span class="ft"><b>Todo lo de los planes anteriores</b><span>La operación completa, ahora con procesos que corren solos.</span></span></li>
+          </ul>
+          <div class="tier-capis">Acceso a CapitIA · <b>CAPIs máximos</b></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tier-table-wrap reveal">
+      <table class="tier-table">
+        <colgroup><col><col><col class="rec-col"><col></colgroup>
+        <thead>
+          <tr>
+            <th></th>
+            <th scope="col">Base</th>
+            <th scope="col" class="rec">Control</th>
+            <th scope="col">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">ERP a la medida + mantenimiento</th>
+            <td class="yes">✓</td><td class="yes rec-col">✓</td><td class="yes">✓</td>
+          </tr>
+          <tr>
+            <th scope="row">Llenado y captura</th>
+            <td>Tú</td><td class="rec-col">Nosotros</td><td>Nosotros</td>
+          </tr>
+          <tr>
+            <th scope="row">Asesoría con expertos certificados</th>
+            <td class="no">—</td><td class="yes rec-col">✓</td><td class="yes">✓</td>
+          </tr>
+          <tr>
+            <th scope="row">Automatización de procesos</th>
+            <td class="no">—</td><td class="no rec-col">—</td><td class="yes">✓</td>
+          </tr>
+          <tr>
+            <th scope="row">CapitIA · CAPIs</th>
+            <td>Limitados</td><td class="rec-col">Amplios</td><td>Máximos</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="tier-gloss reveal"><b>CapitIA</b> es el asistente financiero de IA incluido en todos los planes. Los <b>CAPIs</b> (Capacidad de Procesamiento Inteligente) son la unidad de consumo que gastan CapitIA y las automatizaciones.</p>
+  </div>
+</section>
+
+<!-- INDUSTRIAS -->
+<section class="sec inds" id="industrias">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Industrias</span>
+      <h2>Con quién <span class="accent">trabajamos hoy.</span></h2>
+      <p class="lead">Sectores donde ya operamos. Cada uno con su forma de facturar, costear y reportar — y un sistema construido para esa realidad.</p>
+    </div>
+  </div>
+  <div class="inds-marquee reveal" aria-label="Industrias con las que trabajamos">
+    <div class="inds-track">
+      <div class="inds-row">
+        <span class="ind-chip"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V8l7-4 7 4v13"/><path d="M9 21v-5h6v5"/></svg></span>Construcción</span>
+        <span class="ind-chip"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l6-4 6 4v12"/><path d="M15 21V13l6-3v11"/><path d="M3 21h18"/></svg></span>Desarrollo Inmobiliario</span>
+        <span class="ind-chip"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h16l-1 11H5L4 9Z"/><path d="M4 9l1.5-4h13L20 9"/><path d="M9 13h6"/></svg></span>Franquicias</span>
+        <span class="ind-chip"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3v8a2 2 0 0 0 4 0V3"/><path d="M7 11v10"/><path d="M16 3c-1.5 0-2.5 2-2.5 5s1 4 2.5 4 2.5-1 2.5-4-1-5-2.5-5Z"/><path d="M16 12v9"/></svg></span>Restaurantes</span>
+        <span class="ind-chip"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V10l6 3V10l6 3V7l6 3v11Z"/><path d="M3 21h18"/></svg></span>Manufactura</span>
+        <span class="ind-chip"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v1a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0V6l-3-4Z"/><path d="M4 11v9h16v-9"/><path d="M9 20v-5h6v5"/></svg></span>Comercio</span>
+        <span class="ind-chip"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 13h18"/></svg></span>Servicios</span>
+        <span class="ind-chip"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V11"/><path d="M12 11c0-3 2-5 5-5 0 3-2 5-5 5Z"/><path d="M12 13c0-3-2-5-5-5 0 3 2 5 5 5Z"/><path d="M8 21h8"/></svg></span>Agroindustria</span>
+      </div>
+      <div class="inds-row" aria-hidden="true">
+        <span class="ind-chip"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V8l7-4 7 4v13"/><path d="M9 21v-5h6v5"/></svg></span>Construcción</span>
+        <span class="ind-chip"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l6-4 6 4v12"/><path d="M15 21V13l6-3v11"/><path d="M3 21h18"/></svg></span>Desarrollo Inmobiliario</span>
+        <span class="ind-chip"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h16l-1 11H5L4 9Z"/><path d="M4 9l1.5-4h13L20 9"/><path d="M9 13h6"/></svg></span>Franquicias</span>
+        <span class="ind-chip"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3v8a2 2 0 0 0 4 0V3"/><path d="M7 11v10"/><path d="M16 3c-1.5 0-2.5 2-2.5 5s1 4 2.5 4 2.5-1 2.5-4-1-5-2.5-5Z"/><path d="M16 12v9"/></svg></span>Restaurantes</span>
+        <span class="ind-chip"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V10l6 3V10l6 3V7l6 3v11Z"/><path d="M3 21h18"/></svg></span>Manufactura</span>
+        <span class="ind-chip"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v1a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0V6l-3-4Z"/><path d="M4 11v9h16v-9"/><path d="M9 20v-5h6v5"/></svg></span>Comercio</span>
+        <span class="ind-chip"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 13h18"/></svg></span>Servicios</span>
+        <span class="ind-chip"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V11"/><path d="M12 11c0-3 2-5 5-5 0 3-2 5-5 5Z"/><path d="M12 13c0-3-2-5-5-5 0 3 2 5 5 5Z"/><path d="M8 21h8"/></svg></span>Agroindustria</span>
       </div>
     </div>
   </div>
@@ -775,8 +1004,8 @@ footer .foot-bottom span{color:rgba(224,234,230,0.45);}
 const nav=document.getElementById('nav');
 addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40));
 const toggle=document.getElementById('navToggle'),links=document.getElementById('navLinks');
-toggle.addEventListener('click',()=>links.classList.toggle('open'));
-links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+toggle.addEventListener('click',()=>{const o=links.classList.toggle('open');nav.classList.toggle('nav-open',o);});
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{links.classList.remove('open');nav.classList.remove('nav-open');}));
 const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:0.12});
 document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4*0.08)+'s';io.observe(el);});
 const gNum=document.getElementById('gaugeNum'),gArc=document.getElementById('gaugeArc');
@@ -791,6 +1020,13 @@ const gIO=new IntersectionObserver((es)=>es.forEach(e=>{
   }
 }),{threshold:0.4});
 gIO.observe(document.querySelector('.gauge'));
+const tTabs=document.querySelectorAll('.tier-tab');
+const tPanels=document.querySelectorAll('.tier-panel');
+tTabs.forEach(tab=>tab.addEventListener('click',()=>{
+  const id=tab.dataset.tier;
+  tTabs.forEach(t=>{const on=t===tab;t.classList.toggle('active',on);t.setAttribute('aria-selected',on);});
+  tPanels.forEach(p=>p.classList.toggle('active',p.dataset.tier===id));
+}));
 </script>
 </body>
 </html>
