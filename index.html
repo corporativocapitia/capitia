@@ -39,19 +39,20 @@ body{
 /* === Background con profundidad rica (no plano) === */
 body{
   background:
-    radial-gradient(800px 600px at 92% -8%,rgba(61,90,85,0.34),transparent 60%),
-    radial-gradient(700px 500px at -8% 108%,rgba(8,57,51,0.26),transparent 65%),
-    radial-gradient(900px 500px at 50% 40%,rgba(255,255,255,0.55),transparent 78%),
-    linear-gradient(165deg,#EDEFE9 0%,#F5F6F4 42%,#E5EAE5 100%);
+    radial-gradient(1000px 700px at 100% 0%,rgba(61,90,85,0.55),transparent 55%),
+    radial-gradient(900px 700px at 0% 100%,rgba(8,57,51,0.45),transparent 55%),
+    radial-gradient(800px 500px at 30% 50%,rgba(255,255,255,0.45),transparent 65%),
+    radial-gradient(500px 400px at 70% 60%,rgba(138,163,158,0.30),transparent 65%),
+    linear-gradient(135deg,#EDEFE9 0%,#F5F6F4 30%,#E5EAE5 65%,#EDEFE9 100%);
 }
 body::before{
   content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
   background-image:
-    linear-gradient(rgba(8,57,51,0.07) 1px,transparent 1px),
-    linear-gradient(to right,rgba(8,57,51,0.07) 1px,transparent 1px);
+    linear-gradient(rgba(8,57,51,0.09) 1px,transparent 1px),
+    linear-gradient(to right,rgba(8,57,51,0.09) 1px,transparent 1px);
   background-size:56px 56px;
-  mask-image:radial-gradient(ellipse 80% 70% at center,black 20%,transparent 78%);
-  -webkit-mask-image:radial-gradient(ellipse 80% 70% at center,black 20%,transparent 78%);
+  mask-image:radial-gradient(ellipse 90% 80% at center,black 15%,transparent 82%);
+  -webkit-mask-image:radial-gradient(ellipse 90% 80% at center,black 15%,transparent 82%);
 }
 body::after{
   content:"";position:fixed;inset:0;z-index:1;pointer-events:none;
